@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="P2P(peer to peer)问题当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。 在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。 常见中间件说明 ">
+<meta name="description" content="微服务简介微服务是一种架构风格, 它是由很多个单一的小型功能块组成, 利用模块化的方式组合成复杂的行项目.服务之间相互协调,互相配合,为用户提供最终价值.每个服务围绕着业务进行构建, 并且能够被独立的部署到成产环境.抽象理解: 你可以把每一个功能块当成一个小型的积木(也可当成业务),每个小型的功能块到最后,就像组合成的积木模型一样. 微服务组件及概念1.服务注册，服务提供方将自己调用地址注册到服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="p2p-01">
-<meta property="og:url" content="http://yoursite.com/2018/08/12/p2p-01/index.html">
+<meta property="og:title" content="go-micro-part1基本介绍">
+<meta property="og:url" content="http://yoursite.com/2018/08/14/go-micro-part1基本介绍/index.html">
 <meta property="og:site_name" content="Jake&#39;s Blog">
-<meta property="og:description" content="P2P(peer to peer)问题当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。 在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。 常见中间件说明 ">
+<meta property="og:description" content="微服务简介微服务是一种架构风格, 它是由很多个单一的小型功能块组成, 利用模块化的方式组合成复杂的行项目.服务之间相互协调,互相配合,为用户提供最终价值.每个服务围绕着业务进行构建, 并且能够被独立的部署到成产环境.抽象理解: 你可以把每一个功能块当成一个小型的积木(也可当成业务),每个小型的功能块到最后,就像组合成的积木模型一样. 微服务组件及概念1.服务注册，服务提供方将自己调用地址注册到服务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T08:33:51.000Z">
+<meta property="og:updated_time" content="2018-08-14T08:11:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="p2p-01">
-<meta name="twitter:description" content="P2P(peer to peer)问题当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。 在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。 常见中间件说明 ">
+<meta name="twitter:title" content="go-micro-part1基本介绍">
+<meta name="twitter:description" content="微服务简介微服务是一种架构风格, 它是由很多个单一的小型功能块组成, 利用模块化的方式组合成复杂的行项目.服务之间相互协调,互相配合,为用户提供最终价值.每个服务围绕着业务进行构建, 并且能够被独立的部署到成产环境.抽象理解: 你可以把每一个功能块当成一个小型的积木(也可当成业务),每个小型的功能块到最后,就像组合成的积木模型一样. 微服务组件及概念1.服务注册，服务提供方将自己调用地址注册到服务">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/12/p2p-01/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/14/go-micro-part1基本介绍/"/>
 
 
 
 
 
-  <title>p2p-01 | Jake's Blog</title>
+  <title>go-micro-part1基本介绍 | Jake's Blog</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/p2p-01/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/go-micro-part1基本介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">p2p-01</h1>
+          <h1 class="post-title" itemprop="name headline">go-micro-part1基本介绍</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T15:12:40+08:00">
-                2018-08-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T15:35:43+08:00">
+                2018-08-14
               </time>
             
 
@@ -294,8 +294,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/p2p/" itemprop="url" rel="index">
-                    <span itemprop="name">p2p</span>
+                  <a href="/categories/golang/" itemprop="url" rel="index">
+                    <span itemprop="name">golang</span>
                   </a>
                 </span>
 
@@ -331,31 +331,10 @@
       
 
       
-        <h3 id="P2P-peer-to-peer-问题"><a href="#P2P-peer-to-peer-问题" class="headerlink" title="P2P(peer to peer)问题"></a>P2P(peer to peer)问题</h3><p>当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。</p>
-<p>在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。</p>
-<h3 id="常见中间件说明"><a href="#常见中间件说明" class="headerlink" title="常见中间件说明"></a>常见中间件说明</h3><ul>
-<li><p>防火墙: 防火墙主要限制内网和公网的通讯，通常丢弃未经许可的数据包。防火墙会检测(但是不修改)试图进入内网数据包的IP地址和TCP/UDP端口信息。</p>
-</li>
-<li><p>NAT(网络地址转换器): NAT不止检查进入数据包的头部，而且对其进行修改，从而实现同一内网中不同主机共用更少的公网IP（通常是一个）。</p>
-</li>
-<li><p>Basic NAT(基本NAT): 基本NAT会将内网主机的IP地址映射为一个公网IP，不改变其TCP/UDP端口号。基本NAT通常只有在当NAT有公网IP池的时候才有用。</p>
-</li>
-<li><p>NAPT(网络地址-端口转换器): 到目前为止最常见的即为NAPT，其检测并修改出入数据包的IP地址和端口号，从而允许多个内网主机同时共享一个公网IP地址。</p>
-</li>
-<li><p>Cone NAT(锥形NAT):  在建立了一对（公网IP，公网端口）和（内网IP，内网端口）二元组的绑定之后，Cone NAT会重用这组绑定用于接下来该应用程序的所有会话（同一内网IP和端口），只要还有一个会话还是激活的。 例如，假设客户端A建立了两个连续的对外会话，从相同的内部端点（10.0.0.1:1234）到两个不同的外部服务端S1和S2。Cone NAT只为两个会话映射了一个公网端点（155.99.25.11:62000）， 确保客户端端口的“身份”在地址转换的时候保持不变。由于基本NAT和防火墙都不改变数据包的端口号，因此这些类型的中间件也可以看作是退化的Cone NAT。</p>
-<p>  Cone NAT又分为:</p>
-<ol>
-<li><p>Full Cone NAT(完全锥形 NAT): 只要是从同一个内部地址和端口出来的包，无论目的地址是否相同，NAT 都将它转换成同一个外部地址和端口。</p>
-</li>
-<li><p>Restricted Cone NAT (限制锥形 NAT)（可以理解为 IP 限制）</p>
-</li>
-<li><p>Port Restricted Cone NAT (端口限制锥形 NAT) （ IP+Port 限制）</p>
-</li>
-<li><p>Symmetric NAT(对称 NAT)</p>
-</li>
-</ol>
-</li>
-</ul>
+        <h3 id="微服务简介"><a href="#微服务简介" class="headerlink" title="微服务简介"></a>微服务简介</h3><p>微服务是一种架构风格, 它是由很多个单一的小型功能块组成, 利用模块化的方式组合成复杂的行项目.服务之间相互协调,互相配合,为用户提供最终价值.每个服务围绕着业务进行构建, 并且能够被独立的部署到成产环境.<br>抽象理解: 你可以把每一个功能块当成一个小型的积木(也可当成业务),每个小型的功能块到最后,就像组合成的积木模型一样.</p>
+<h3 id="微服务组件及概念"><a href="#微服务组件及概念" class="headerlink" title="微服务组件及概念"></a>微服务组件及概念</h3><p>1.<strong>服务注册</strong>，服务提供方将自己调用地址注册到服务注册中心，让服务调用方能够方便地找到自己。<br>2.<strong>服务发现</strong>，服务调用方从服务注册中心找到自己需要调用的服务的地址。<br>3.<strong>负载均衡</strong>，服务提供方一般以多实例的形式提供服务，负载均衡功能能够让服务调用方连接到合适的服务节点。并且，节点选择的工作对服务调用方来说是透明的。<br>4.<strong>服务网关</strong>，服务网关是服务调用的唯一入口，可以在这个组件是实现用户鉴权、动态路由、灰度发布、A/B测试、负载限流等功能。<br>5.<strong>配置中心</strong>，将本地化的配置信息（properties, xml, yaml等）注册到配置中心，实现程序包在开发、测试、生产环境的无差别性，方便程序包的迁移。<br>6.<strong>API管理</strong>，以方便的形式编写及更新API文档，并以方便的形式供调用者查看和测试。<br>7.<strong>集成框架</strong>，微服务组件都以职责单一的程序包对外提供服务，集成框架以配置的形式将所有微服务组件（特别是管理端组件）集成到统一的界面框架下，让用户能够在统一的界面中使用系统。<br>8.<strong>分布式事务</strong>，对于重要的业务，需要通过分布式事务技术（TCC、高可用消息服务、最大努力通知）保证数据的一致性。<br>9.<strong>调用链</strong>，记录完成一个业务逻辑时调用到的微服务，并将这种串行或并行的调用关系展示出来。在系统出错时，可以方便地找到出错点。<br>10.<strong>支撑平台</strong>，系统微服务化后，系统变得更加碎片化，系统的部署、运维、监控等都比单体架构更加复杂，那么，就需要将大部分的工作自动化。现在，可以通过Docker等工具来中和这些微服务架构带来的弊端。 例如持续集成、蓝绿发布、健康检查、性能健康等等。严重点，以我们两年的实践经验，可以这么说，如果没有合适的支撑平台或工具，就不要使用微服务架构。</p>
+<p>###go-micro<br>Micro是一个微服务生态系统。目标是简化分布式系统开发。<br>技术正在迅速发展。现在云计算能够给我们几乎是无限的scale能力，但是采用现有工具来使用scale能力仍然是很困难的。Micro试图去解决这个问题，开发人员首先关注。<br>Micro为微服务提供了基本的构建模块。目标是简化分布式系统开发。因为微服务是一种架构模式，所以Micro通过工具在逻辑上拆分。</p>
+<p>###go-micro工具概念<br><strong>Registry</strong><br>注册表提供可插入的服务发现库，来查找正在运行的服务。当前的实现是consul，etcd，内存和kubernetes。如果您的喜欢不一样，该接口很容易实现。<br><strong>Selector</strong><br>选择器通过选择提供负载均衡机制。当客户端向服务器发出请求时，它将首先查询服务的注册表。这通常会返回一个表示服务的正在运行的节点列表。选择器将选择这些节点中的一个用于查询。多次调用选择器将允许使用平衡算法。目前的方法是循环法，随机哈希和黑名单。<br><strong>Broker</strong><br>Broker是发布和订阅的可插入接口。微服务是一个事件驱动的架构，发布和订阅事件应该是一流的公民。目前的实现包括nats，rabbitmq和http（用于开发）。<br><strong>Transport</strong><br>传输是通过点对点传输消息的可插拔接口。目前的实现是http，rabbitmq和nats。通过提供这种抽象，运输可以无缝地换出。<br><strong>Client</strong><br>客户端提供了一种制作RPC查询的方法。它结合了注册表，选择器，代理和传输。它还提供重试，超时，使用上下文等。<br><strong>Server</strong><br>服务器是构建正在运行的微服务的接口。它提供了一种提供RPC请求的方法。</p>
 
       
     </div>
@@ -380,15 +359,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/14/golang实现链表/" rel="next" title="golang实现链表">
+                <i class="fa fa-chevron-left"></i> golang实现链表
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/12/golang-中的range/" rel="prev" title="golang 中的range">
-                golang 中的range <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -511,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#P2P-peer-to-peer-问题"><span class="nav-number">1.</span> <span class="nav-text">P2P(peer to peer)问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见中间件说明"><span class="nav-number">2.</span> <span class="nav-text">常见中间件说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务简介"><span class="nav-number">1.</span> <span class="nav-text">微服务简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务组件及概念"><span class="nav-number">2.</span> <span class="nav-text">微服务组件及概念</span></a></li></ol></div>
             
 
           </div>
