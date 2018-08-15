@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="什么是I/O多路复用呢?I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作. 什么是文件描述符呢?文件描述符是内核为了高效管理已打开文件,所产生的一个非负的整数.内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。 select poll epoll它们都是I/O多路复用机">
+<meta name="description" content="什么是I/O多路复用呢?I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I&#x2F;O多路复用详解">
 <meta property="og:url" content="http://yoursite.com/2018/08/12/I-O多路复用详解/index.html">
 <meta property="og:site_name" content="Jake&#39;s Blog">
-<meta property="og:description" content="什么是I/O多路复用呢?I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作. 什么是文件描述符呢?文件描述符是内核为了高效管理已打开文件,所产生的一个非负的整数.内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。 select poll epoll它们都是I/O多路复用机">
+<meta property="og:description" content="什么是I/O多路复用呢?I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T08:44:36.000Z">
+<meta property="og:updated_time" content="2018-08-14T09:59:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="I&#x2F;O多路复用详解">
-<meta name="twitter:description" content="什么是I/O多路复用呢?I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作. 什么是文件描述符呢?文件描述符是内核为了高效管理已打开文件,所产生的一个非负的整数.内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。 select poll epoll它们都是I/O多路复用机">
+<meta name="twitter:description" content="什么是I/O多路复用呢?I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作.">
 
 
 
@@ -331,7 +331,7 @@
       
 
       
-        <h3 id="什么是I-O多路复用呢"><a href="#什么是I-O多路复用呢" class="headerlink" title="什么是I/O多路复用呢?"></a>什么是I/O多路复用呢?</h3><p>I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作.</p>
+        <h3 id="什么是I-O多路复用呢"><a href="#什么是I-O多路复用呢" class="headerlink" title="什么是I/O多路复用呢?"></a>什么是I/O多路复用呢?</h3><p>I/O多路复用是通过一种机制或一个进程对文件描述符的监控, 当文件描述符就绪时, 会通知应用程序进行操作.<br><a id="more"></a></p>
 <h3 id="什么是文件描述符呢"><a href="#什么是文件描述符呢" class="headerlink" title="什么是文件描述符呢?"></a>什么是文件描述符呢?</h3><p>文件描述符是内核为了高效管理已打开文件,所产生的一个非负的整数.内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。</p>
 <h3 id="select-poll-epoll"><a href="#select-poll-epoll" class="headerlink" title="select poll epoll"></a>select poll epoll</h3><p>它们都是I/O多路复用机制</p>
 

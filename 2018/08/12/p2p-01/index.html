@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="P2P(peer to peer)问题当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。 在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。 常见中间件说明 ">
+<meta name="description" content="P2P(peer to peer)问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="p2p-01">
 <meta property="og:url" content="http://yoursite.com/2018/08/12/p2p-01/index.html">
 <meta property="og:site_name" content="Jake&#39;s Blog">
-<meta property="og:description" content="P2P(peer to peer)问题当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。 在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。 常见中间件说明 ">
+<meta property="og:description" content="P2P(peer to peer)问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T08:33:51.000Z">
+<meta property="og:updated_time" content="2018-08-14T09:59:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="p2p-01">
-<meta name="twitter:description" content="P2P(peer to peer)问题当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。 在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。 常见中间件说明 ">
+<meta name="twitter:description" content="P2P(peer to peer)问题">
 
 
 
@@ -331,7 +331,8 @@
       
 
       
-        <h3 id="P2P-peer-to-peer-问题"><a href="#P2P-peer-to-peer-问题" class="headerlink" title="P2P(peer to peer)问题"></a>P2P(peer to peer)问题</h3><p>当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。</p>
+        <h3 id="P2P-peer-to-peer-问题"><a href="#P2P-peer-to-peer-问题" class="headerlink" title="P2P(peer to peer)问题"></a>P2P(peer to peer)问题</h3><a id="more"></a>
+<p>当今互联网到处存在着一些中间件(MIddleBoxes)，如NAT和防火墙，导致两个(不在同一内网)中的客户端无法直接通信。</p>
 <p>在P2P应用中， 内网主机（客户端）需要对另外的终端（Peer）直接建立链接，但是发起者和响应者可能在不同的中间件后面， 两者都没有公网IP地址。而外部对NAT公网IP和端口主动的链接或数据都会因内网未请求被丢弃掉。</p>
 <h3 id="常见中间件说明"><a href="#常见中间件说明" class="headerlink" title="常见中间件说明"></a>常见中间件说明</h3><ul>
 <li><p>防火墙: 防火墙主要限制内网和公网的通讯，通常丢弃未经许可的数据包。防火墙会检测(但是不修改)试图进入内网数据包的IP地址和TCP/UDP端口信息。</p>
