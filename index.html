@@ -239,6 +239,432 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/19/golang-一致性hash算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jake's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/19/golang-一致性hash算法/" itemprop="url">golang-一致性hash算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T12:56:55+08:00">
+                2018-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/03-源码解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jake's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/03-源码解析/" itemprop="url">03-源码解析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T18:54:00+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/etcd/" itemprop="url" rel="index">
+                    <span itemprop="name">etcd</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Raft模块介绍"><a href="#Raft模块介绍" class="headerlink" title="Raft模块介绍"></a>Raft模块介绍</h2><h3 id="Raft结构体介绍"><a href="#Raft结构体介绍" class="headerlink" title="Raft结构体介绍"></a>Raft结构体介绍</h3><p>raft结构体封装了当前节点的所有核心数据</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> raft <span class="keyword">struct</span> &#123;</span><br><span class="line">	id <span class="keyword">uint64</span> <span class="comment">//当前节点在集群中的ID</span></span><br><span class="line"></span><br><span class="line">	Term <span class="keyword">uint64</span> <span class="comment">// 当前任期号</span></span><br><span class="line">	Vote <span class="keyword">uint64</span> <span class="comment">// 当前任期投票给了哪个节点</span></span><br><span class="line">	<span class="comment">// 与只读有关,后面详细介绍</span></span><br><span class="line">	readStates []ReadState</span><br><span class="line"></span><br><span class="line">	raftLog *raftLog <span class="comment">//存放本地log</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 对于当前节点,发送出去的消息,但未收到响应的消息个数上线.</span></span><br><span class="line">	<span class="comment">//如果超数量超过当前阈值,则进制当前节点发送消息.</span></span><br><span class="line">	maxInflight <span class="keyword">int</span></span><br><span class="line">	<span class="comment">// 单条消息的最大字节数.</span></span><br><span class="line">	maxMsgSize <span class="keyword">uint64</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Leader节点记录集群其他节点的日志复制情况.</span></span><br><span class="line">	prs        <span class="keyword">map</span>[<span class="keyword">uint64</span>]*Progress</span><br><span class="line">	learnerPrs <span class="keyword">map</span>[<span class="keyword">uint64</span>]*Progress</span><br><span class="line">	<span class="comment">// 当前节点在集群中的状态.可分为4中,分别为StateFollower,</span></span><br><span class="line">	<span class="comment">// StateCandidate,StateLeader,StatePreCandidate</span></span><br><span class="line">	state StateType</span><br><span class="line">	<span class="comment">// 是不是Leader</span></span><br><span class="line">	isLearner <span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// 在选举过程中,收到节点的投票,如果收到某一个节点的投票,</span></span><br><span class="line">	<span class="comment">//则对应的vote则为true.用来投票数是否过半.</span></span><br><span class="line">	votes <span class="keyword">map</span>[<span class="keyword">uint64</span>]<span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// 缓存当前节点等待发送的消息.</span></span><br><span class="line">	msgs []pb.Message</span><br><span class="line">	<span class="comment">// 当前集群中leader节点的ID</span></span><br><span class="line">	lead <span class="keyword">uint64</span></span><br><span class="line">	<span class="comment">// 用于集群中Leader节点的转移.</span></span><br><span class="line">	leadTransferee <span class="keyword">uint64</span></span><br><span class="line"></span><br><span class="line">	pendingConfIndex <span class="keyword">uint64</span></span><br><span class="line">	<span class="comment">// 与只读有关,后面详细介绍</span></span><br><span class="line">	readOnly *readOnly</span><br><span class="line">	<span class="comment">// 选举计时器的指针</span></span><br><span class="line">	electionElapsed <span class="keyword">int</span></span><br><span class="line">	<span class="comment">// 心跳计时指针</span></span><br><span class="line">	heartbeatElapsed <span class="keyword">int</span></span><br><span class="line">	<span class="comment">//每隔一段时间Leader会发送心跳.如果发现自己没有收到</span></span><br><span class="line">	<span class="comment">//足够的心跳响应.则会切换为Follower</span></span><br><span class="line">	checkQuorum <span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// 选举之前会询问所有Follower是否进行选举,如果一半以上的</span></span><br><span class="line">	<span class="comment">// Follower能够正常的收到Leader的心跳,则会拒绝参选.反之</span></span><br><span class="line">	<span class="comment">// 则会举行新的选举.</span></span><br><span class="line">	preVote <span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// 心跳超时时间</span></span><br><span class="line">	heartbeatTimeout <span class="keyword">int</span></span><br><span class="line">	<span class="comment">// 选举超时时间</span></span><br><span class="line">	electionTimeout <span class="keyword">int</span></span><br><span class="line">	<span class="comment">// 该值是electionTimeout~2 * electionTimeout -1之间的随机值.</span></span><br><span class="line">	<span class="comment">// 也是选举计时器的上限,如果electionElapased超过该值,则超时.</span></span><br><span class="line">	randomizedElectionTimeout <span class="keyword">int</span></span><br><span class="line">	disableProposalForwarding <span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// 当前节点推进逻辑时钟的函数</span></span><br><span class="line">	tick <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	// 当前节点收到消息时的处理函数</span></span><br><span class="line"><span class="function">	<span class="title">step</span>   <span class="title">stepFunc</span></span></span><br><span class="line"><span class="function">	<span class="title">logger</span> <span class="title">Logger</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>目前先理解各个组件,后面介绍raft结构体的绑定方法.</p>
+<h3 id="Config结构体介绍"><a href="#Config结构体介绍" class="headerlink" title="Config结构体介绍"></a>Config结构体介绍</h3><p>config结构体主要用于配置参数的传递,在创建raft实例时所需的参数会通过Config实例进行传递.<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Config <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 当前节点ID</span></span><br><span class="line">	ID <span class="keyword">uint64</span></span><br><span class="line">	<span class="comment">// 记录集群中所有节点的ID</span></span><br><span class="line">	peers []<span class="keyword">uint64</span></span><br><span class="line"></span><br><span class="line">	learners []<span class="keyword">uint64</span></span><br><span class="line">	<span class="comment">// 用于初始化raft.electionTimeout,就是逻辑时间钟进多少次,</span></span><br><span class="line">	<span class="comment">// 会触发新的Leader选举.</span></span><br><span class="line">	ElectionTick <span class="keyword">int</span></span><br><span class="line">	<span class="comment">// 用于初始化raft.headtbeatTime, 就是逻辑时钟推进多少次,</span></span><br><span class="line">	<span class="comment">// 就可以收到Leader心跳.</span></span><br><span class="line">	HeartbeatTick <span class="keyword">int</span></span><br><span class="line">	<span class="comment">// 当前节点保存raft日志使用的存储.</span></span><br><span class="line">	Storage Storage</span><br><span class="line">	<span class="comment">// 当前已经应用的记录位置.该值在节点启动时需要设置,</span></span><br><span class="line">	<span class="comment">// 否则会重新应用已用过的Entry记录</span></span><br><span class="line">	Applied <span class="keyword">uint64</span></span><br><span class="line">	<span class="comment">// 用于初始化raft.maxMsgSize,如果是math.MaxUint64则没</span></span><br><span class="line">	<span class="comment">// 有上限,如果为0,则每一条消息只能带一个Entry</span></span><br><span class="line">	MaxSizePerMsg <span class="keyword">uint64</span></span><br><span class="line">	<span class="comment">// 用于初始化raft.maxInflighyMsgs,已经发送出去的消息,</span></span><br><span class="line">	<span class="comment">// 单位收到响应的最大值</span></span><br><span class="line">	MaxInflightMsgs <span class="keyword">int</span></span><br><span class="line">	<span class="comment">// 初始化raft.CheckQuorum模式</span></span><br><span class="line">	CheckQuorum <span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// 初始化rafy.PreVote字段</span></span><br><span class="line">	PreVote <span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// 与只读有关,后面详细介绍</span></span><br><span class="line">	ReadOnlyOption ReadOnlyOption</span><br><span class="line"></span><br><span class="line">	Logger Logger</span><br><span class="line"></span><br><span class="line">	DisableProposalForwarding <span class="keyword">bool</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>没有方法可以介绍</p>
+<h3 id="Storage接口及其实现"><a href="#Storage接口及其实现" class="headerlink" title="Storage接口及其实现"></a>Storage接口及其实现</h3><p>在raft模块中,定义了Storage接口以及其实现,目的就是存储当前节点收到的Entry记录.<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HardState结构</span></span><br><span class="line"><span class="keyword">type</span> HardState <span class="keyword">struct</span> &#123;</span><br><span class="line">	Term             <span class="keyword">uint64</span> <span class="string">`protobuf:"varint,1,opt,name=term" json:"term"`</span></span><br><span class="line">	Vote             <span class="keyword">uint64</span> <span class="string">`protobuf:"varint,2,opt,name=vote" json:"vote"`</span></span><br><span class="line">	Commit           <span class="keyword">uint64</span> <span class="string">`protobuf:"varint,3,opt,name=commit" json:"commit"`</span></span><br><span class="line">	XXX_unrecognized []<span class="keyword">byte</span> <span class="string">`json:"-"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ConfState结构</span></span><br><span class="line"><span class="keyword">type</span> ConfState <span class="keyword">struct</span> &#123;</span><br><span class="line">	Nodes            []<span class="keyword">uint64</span> <span class="string">`protobuf:"varint,1,rep,name=nodes" json:"nodes,omitempty"`</span></span><br><span class="line">	Learners         []<span class="keyword">uint64</span> <span class="string">`protobuf:"varint,2,rep,name=learners" json:"learners,omitempty"`</span></span><br><span class="line">	XXX_unrecognized []<span class="keyword">byte</span>   <span class="string">`json:"-"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Storage <span class="keyword">interface</span> &#123;</span><br><span class="line">	<span class="comment">// 集群中的每个几点都应该保存一些基本主要信息</span></span><br><span class="line">	<span class="comment">// HardState存储以上主要信息</span></span><br><span class="line">	<span class="comment">// ConfState存储集群所有ID(及Nodes)</span></span><br><span class="line">	InitialState() (pb.HardState, pb.ConfState, error)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Entries返回指定范围([lo, hi])的entry记录</span></span><br><span class="line">	<span class="comment">// maxSize限制返回Entry集合的字数上线</span></span><br><span class="line">	Entries(lo, hi, maxSize <span class="keyword">uint64</span>) ([]pb.Entry, error)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// FirstIndex 返回SnapShot(快照)后的第一个Entry的索引值</span></span><br><span class="line">	FirstIndex() (<span class="keyword">uint64</span>, error)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// LastIndex返回记录中最后一条Entry记录的索引值</span></span><br><span class="line">	LastIndex() (<span class="keyword">uint64</span>, error)</span><br><span class="line">	<span class="comment">// 返回最后一次快照的数据</span></span><br><span class="line">	Snapshot() (pb.Snapshot, error)</span><br><span class="line">	<span class="comment">// 查询Index对应的Term值</span></span><br><span class="line">	Term(i <span class="keyword">uint64</span>) (<span class="keyword">uint64</span>, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="MemoryStorage"><a href="#MemoryStorage" class="headerlink" title="MemoryStorage"></a>MemoryStorage</h4><p>MemoryStorage是在内存中维护上述状态比如状态信息(hardState信息),数据快照(snapshot字段),以及所有的entries.<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> MemoryStorage <span class="keyword">struct</span> &#123;</span><br><span class="line">	sync.Mutex</span><br><span class="line"></span><br><span class="line">	hardState pb.HardState</span><br><span class="line">	snapshot  pb.Snapshot</span><br><span class="line"></span><br><span class="line">	ents []pb.Entry</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/02-Raft简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jake's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/02-Raft简介/" itemprop="url">02-Raft简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T17:32:07+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/etcd/" itemprop="url" rel="index">
+                    <span itemprop="name">etcd</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Raft协议"><a href="#Raft协议" class="headerlink" title="Raft协议"></a>Raft协议</h2><p>raft协议是解决分布式一致性问题的协议.</p>
+<h3 id="工作状态简介"><a href="#工作状态简介" class="headerlink" title="工作状态简介"></a>工作状态简介</h3><p>Raft协议的工作模式是一个Leader节点和多个Follower节点的模式.在Raft协议中,每个节点都维护了一个状态机,该状态机有三个状态.</p>
+<ul>
+<li>Leader: Leader节点负责所有的客户端请求,当收到客户端的写入请求后,Leader节点会在本地写入一条相应的日志.然后将其封装成Message发送给其他的Follower,Follower收到后会给Leader一个消息回执,当Leader收到一半以上的成功的消息回执后,Leader则认为该条Message已提交.Leader还会处理客户端的读请求.还会定时向Folloer发送健康心跳(主要防止Follower进行下一个term选举).</li>
+<li>Candidate: 是Follower长时间未收到Leader的心跳,会自动的从Follower状态变为Candidate状态.并且进入下一个任期(Trem),进行新的选举Leader.</li>
+<li>Follower: Follower只是响应一个Leader,Candidate的请求.当Follower收到客户端的请求后,会转发给Leader.</li>
+</ul>
+<p>Term介绍: Term是任期的意思.可以理解为下一届的意思.当Follower切换状态为Candidate时,Term进行加一.</p>
+<h3 id="Leader选举时间"><a href="#Leader选举时间" class="headerlink" title="Leader选举时间"></a>Leader选举时间</h3><p>在Raft协议中两个时间控制Leader的选举.一个选举超时时间(election time),另一个为心跳超时时间.</p>
+<ul>
+<li>选举超时时间: 每个Follower收不到Leader的心跳后,不会立刻进行选举,而是等待一段时间后才切换为Candidate进行选举(哪个节点醒来的早,则哪个节点变为Candidate),这段时间称之为选举超时时间.election time默认的范围是150~300ms之间.</li>
+<li>心跳超时时间: 也就是Leader向所有Follower发送心跳的时间.心跳超时时间远小于选举超时时间.</li>
+</ul>
+<p>准确来说选举超时时间控制着Leader的选举.当获取投票数量大于总结点数量一半时会从candidate状态变为Leader状态.</p>
+<p></p>
+<h3 id="选举Leader时可能出现的情况"><a href="#选举Leader时可能出现的情况" class="headerlink" title="选举Leader时可能出现的情况"></a>选举Leader时可能出现的情况</h3><h4 id="两个Follower同时苏醒-及选举超时时间相同"><a href="#两个Follower同时苏醒-及选举超时时间相同" class="headerlink" title="两个Follower同时苏醒(及选举超时时间相同)"></a>两个Follower同时苏醒(及选举超时时间相同)</h4><p>比如说当前有4个节点,进入了新的Term,当两个Follower同时进入Candidate状态时,首先他们都会给自己先投一票,然后向其他节点发送一个request_vote请求,让其他的Follower对他们进行投票.获取的票数一样.则当前Term失效,进入下一次选举.</p>
+<h4 id="Candidate的Term小于其他节点时"><a href="#Candidate的Term小于其他节点时" class="headerlink" title="Candidate的Term小于其他节点时"></a>Candidate的Term小于其他节点时</h4><p>这种情况也是存在的,比如说当前有A,B,C,D四个节点,当在新的一个选举的Term中,B变为Candidate,C也是Candidate,B,C都有投票,以及让别人投票的权利,如果B收到C的投票请求后,发现C的Term大于自己的Term,则会自动切换为Follower状态.</p>
+<h4 id="脑裂情况"><a href="#脑裂情况" class="headerlink" title="脑裂情况"></a>脑裂情况</h4><p>当Leader发生宕机的情况时,会有一个Follower的选举超时时间最先超时,他会切换状态为Candidate,并且自身Term加一,向自己进行投票,随后发送request_vote,请求其他Follower向他进行投票,如果获取票数大于总节点数一般以上,它会变为当界的Leader.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/01-etcd简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -333,6 +759,41 @@
         
           
             <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>etcd 是一个可靠的分布式KV存储系统, 底层实现Raft协议, 主要用于共享配置和服务发现.</p>
+<h3 id="zookeeper比较"><a href="#zookeeper比较" class="headerlink" title="zookeeper比较"></a>zookeeper比较</h3><p>etcd是唯一一个可以和zookeeper媲美的组件,下列列出etcd比zoopkeeper的一些优点:</p>
+<ul>
+<li>一致性协议: etcd是Raft一致性协议来实现分布式一致性.zookeeper是ZAB协议,ZAB协议是一种类Paxos协议.目前公认Raft协议比Paxos协议易于理解,易于工作施展.</li>
+<li>API接口: etcd的V2版本提供了HTTP+Json的调用方式.在etcd的V3中的客户端则使用GRPC进行远程调用.</li>
+<li>性能: 官方提供的测试基准数据,etcd每秒的写入量可达1000+次,优于zoopkeeper.</li>
+<li>安全性:etcd提供TLS访问, 而zookeeper在权限访问方面略显粗糙.</li>
+</ul>
+<h3 id="源码模块的主要功能说明"><a href="#源码模块的主要功能说明" class="headerlink" title="源码模块的主要功能说明"></a>源码模块的主要功能说明</h3><ul>
+<li>raft: Raft协议的核心实现.其中只实现了基本的Raft协议.并未提供实现网络层相关内容.</li>
+<li>raft-http: Raft协议中各个节点发送消息时使用的网络层协议.该模块与raft模块紧密相关.</li>
+<li>wal 和 snap: WAL日志和快照存储相关的实现.</li>
+<li>store: etcd中的v2版本存储实现.v2版本的存储是完全的内存实现.</li>
+<li>mvcc: etcd中的v3版本存储实现.v3版本底层使用BoltDB实现持久换存储.</li>
+<li>lease: 租约相关实现.</li>
+<li>auth 和 alarm: 权限和警报相关实现.</li>
+<li>etcdserver: etcd服务端相关实现.它会基于上述模块提供的功能,对外提供一个etcd节点的完整功能.</li>
+<li>client: v2版本客户端的实现. etcd的V2版本提供了HTTP+Json的调用方式与服务端进行交互.</li>
+<li>clientv3: v3版本的客户端实现. etcd的V3的客户端则通过GRPC的方式与服务端进行交互.</li>
+</ul>
+<h3 id="下载etcd"><a href="#下载etcd" class="headerlink" title="下载etcd"></a>下载etcd</h3><p>go get github.com/coreos/etcd/cmd/etcd</p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>etcd提供了单机模式和集群模式.默认配置运行时, etcd会监听本地的2379<br>和2380两个端口(2379主要与客户端进行交互,2380主要与etcd内部节点进行交互).</p>
+<p>下面在一台机器上搭建3个etcd节点,使每个节点监听不同的端口,形成伪分布式集群.<br>以下启动的方式,属于静态方式.这种方式会预先将集群的各个节点的配置信息设置好,然后逐个启动,形成集群.</p>
+<p>etcd –name infra0 –initial-adverties-peer-urls <a href="http://127.0.0.1:2380" target="_blank" rel="noopener">http://127.0.0.1:2380</a> \<br>–listen-peer-urls <a href="http://127.0.0.1:2380" target="_blank" rel="noopener">http://127.0.0.1:2380</a> \<br>–listen-client-urls <a href="http://127.0.0.1:2379" target="_blank" rel="noopener">http://127.0.0.1:2379</a> \<br>–advertise-client-urls <a href="http://127.0.0.1:2379" target="_blank" rel="noopener">http://127.0.0.1:2379</a> \<br>–initial-cluster-token etcd-cluster-1 \<br>–initial-cluster infra0=<a href="http://127.0.0.1:2380" target="_blank" rel="noopener">http://127.0.0.1:2380</a>, infra1=<a href="http://127.0.0.1:2382,infar2=http://127.0.0.1:2384" target="_blank" rel="noopener">http://127.0.0.1:2382,infar2=http://127.0.0.1:2384</a> \<br>–initial-cluster-state new</p>
+<p>etcd –name infra1 –initial-adverties-peer-urls <a href="http://127.0.0.1:2382" target="_blank" rel="noopener">http://127.0.0.1:2382</a> \<br>–listen-peer-urls <a href="http://127.0.0.1:2382" target="_blank" rel="noopener">http://127.0.0.1:2382</a> \<br>–listen-client-urls <a href="http://127.0.0.1:2381" target="_blank" rel="noopener">http://127.0.0.1:2381</a> \<br>–advertise-client-urls <a href="http://127.0.0.1:2381" target="_blank" rel="noopener">http://127.0.0.1:2381</a> \<br>–initial-cluster-token etcd-cluster-1 \<br>–initial-cluster infra0=<a href="http://127.0.0.1:2380" target="_blank" rel="noopener">http://127.0.0.1:2380</a>, infra1=<a href="http://127.0.0.1:2382,infar2=http://127.0.0.1:2384" target="_blank" rel="noopener">http://127.0.0.1:2382,infar2=http://127.0.0.1:2384</a> \<br>–initial-cluster-state new</p>
+<p>etcd –name infra2 –initial-adverties-peer-urls <a href="http://127.0.0.1:2384" target="_blank" rel="noopener">http://127.0.0.1:2384</a> \<br>–listen-peer-urls <a href="http://127.0.0.1:2384" target="_blank" rel="noopener">http://127.0.0.1:2384</a> \<br>–listen-client-urls <a href="http://127.0.0.1:2383" target="_blank" rel="noopener">http://127.0.0.1:2383</a> \<br>–advertise-client-urls <a href="http://127.0.0.1:2383" target="_blank" rel="noopener">http://127.0.0.1:2383</a> \<br>–initial-cluster-token etcd-cluster-1 \<br>–initial-cluster infra0=<a href="http://127.0.0.1:2380" target="_blank" rel="noopener">http://127.0.0.1:2380</a>, infra1=<a href="http://127.0.0.1:2382,infar2=http://127.0.0.1:2384" target="_blank" rel="noopener">http://127.0.0.1:2382,infar2=http://127.0.0.1:2384</a> \<br>–initial-cluster-state new</p>
+<h3 id="命令参数简介"><a href="#命令参数简介" class="headerlink" title="命令参数简介"></a>命令参数简介</h3><ul>
+<li>–name: etcd集群中的节点名称设置, 在同一个集群内必须是唯一的.</li>
+<li>–listen-peer-urls: 用于集群内部各个节点之间的通信的url地址.每个节点可以监听多个url地址.集群内部将通过这些URL地址进行交互,例如:Leader选举,Message传输.</li>
+<li>–initial-advertise-peer-urls: 建议用于集群内部节点之间交互的URL地址,节点以该值进行通信.</li>
+<li>–listen-client-urls: 用于当前节点与客户端交互的URL.每个节点同样可以有提供多个URL.</li>
+<li>–advertise-client-urls: 建议客户端使用的URL地址,该值用于etcd代理或者etcd成员与etcd节通信.</li>
+<li>–initial-cluster-token etcd-culster-1:集群唯一标识.</li>
+<li>–initial-cluster: 集群中所有的initial-advertise-peers-urls的合集.</li>
+<li>–initial-cluster-state new: 新建集群的标识.</li>
+</ul>
 
           
         
@@ -514,449 +975,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/go-micro-part1基本介绍/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jake's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/14/go-micro-part1基本介绍/" itemprop="url">go-micro-part1基本介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T15:35:43+08:00">
-                2018-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/golang/" itemprop="url" rel="index">
-                    <span itemprop="name">golang</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="微服务简介"><a href="#微服务简介" class="headerlink" title="微服务简介"></a>微服务简介</h3><p>微服务是一种架构风格, 它是由很多个单一的小型功能块组成, 利用模块化的方式组合成复杂的行项目.服务之间相互协调,互相配合,为用户提供最终价值.每个服务围绕着业务进行构建, 并且能够被独立的部署到成产环境.<br>抽象理解: 你可以把每一个功能块当成一个小型的积木(也可当成业务),每个小型的功能块到最后,就像组合成的积木模型一样.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/14/go-micro-part1基本介绍/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/golang实现链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jake's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/14/golang实现链表/" itemprop="url">golang实现链表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T14:37:53+08:00">
-                2018-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/golang/" itemprop="url" rel="index">
-                    <span itemprop="name">golang</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="链表的定义"><a href="#链表的定义" class="headerlink" title="链表的定义"></a>链表的定义</h3><p>链表是一种常见的数据结构, 是一种线性表, 但不像顺序表一样,连续的存储数据,而是在每个节点上存储下一个节点的信息.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/14/golang实现链表/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/golang实现栈与队列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jake's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/14/golang实现栈与队列/" itemprop="url">golang实现栈与队列</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T13:38:07+08:00">
-                2018-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/golang/" itemprop="url" rel="index">
-                    <span itemprop="name">golang</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>  栈是一种容器, 可以存放元素,访问元素,删除元素,它的特点是后进先出<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/14/golang实现栈与队列/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1002,7 +1025,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
